@@ -22,10 +22,7 @@ set backupdir=$VIM/backup
 " スワップファイルの場所
 set directory=$VIM/swap
 " undoファイルの場所
-set undodir==$VIM/undo
-" ビープ音を無効にする
-set t_vb=2
-set visualbell
+set undodir=$VIM/undo
 
 " -----------------------------------------------
 " - ノーマルモードのマッピング設定
