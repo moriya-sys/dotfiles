@@ -1,52 +1,56 @@
 " -----------------------------------------------
-" - �I�v�V�����ݒ�
+" - オプション設定
 " -----------------------------------------------
-" �s�ԍ���\������
+" 行番号を表示する
 set number
-" �I�[�g�C���f���g�̐ݒ�
+" オートインデントの設定
 set autoindent
-" �C���N�������^���T�[�`��L��
+" インクリメンタルサーチを有効
 set incsearch
-" �V���^�b�N�X�n�C���C�g�̐ݒ�
+" シンタックスハイライトの設定
 syntax on
-" �N���b�v�{�[�h�ɃR�s�[����
+" クリップボードにコピーする
 set clipboard=unnamed
-" �^�u�̐ݒ�
+" タブの設定
 set tabstop=4
-" �I�[�g�C���f���g���̃^�u�ݒ�
+" オートインデント時のタブ設定
 set shiftwidth=4
-" �ҏW���ł����̃t�@�C�����J����悤�ɂ���
+" 編集中でも他のファイルを開けるようにする
 set hidden
-" �o�b�N�A�b�v�t�@�C���̏ꏊ
+" バックアップファイルの場所
 set backupdir=$VIM/backup
-" �X���b�v�t�@�C���̏ꏊ
+" スワップファイルの場所
 set directory=$VIM/swap
-" undo�t�@�C���̏ꏊ
+" undoファイルの場所
 set undodir=$VIM/undo
 
 " -----------------------------------------------
-" - �m�[�}�����[�h�̃}�b�s���O�ݒ�
+" - 全モード共通
 " -----------------------------------------------
-" �S�I��
+noremap gp "0p
+noremap gP "0P
+" -----------------------------------------------
+" - ノーマルモードのマッピング設定
+" -----------------------------------------------
+" 全選択
 nnoremap <Space>a ggVG
-" �����R�}���h
+" 検索コマンド
 nnoremap <Space>i /
-" �u���R�}���h
+" 置換コマンド
 nnoremap <Space>s :%s/
-" vimrc�\��
-nnoremap <Space>. :e ~/_vimrc
-" vimrc�ǂݍ���
-nnoremap <Space>l :source ~/_vimrc
-" �o�b�t�@�؂�ւ�
-nnoremap <Space>n :bnext
-nnoremap <Space>N :bprev
-" �t�@�C���N��
-nnoremap <Space>f :e.
-" �\���s�P�ʂł̈ړ��Ǝ��ۂ̍s�P�ʂ̈ړ��R�}���h���t�]
+" vimrc表示
+nnoremap <Space>. :e ~/_vimrc
+" vimrc読み込み
+nnoremap <Space>l :source ~/_vimrc
+" バッファ切り替え
+nnoremap <Space>n :bnext
+nnoremap <Space>N :bprev
+" ファイラ起動
+nnoremap <Space>f :e.
+" 表示行単位での移動と実際の行単位の移動コマンドを逆転
 nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
-" x�R�}���h�Ƀu���b�N�z�[�����W�X�^�ݒ�
+" xコマンドにブラックホールレジスタ設定
 nnoremap x "_x
-
