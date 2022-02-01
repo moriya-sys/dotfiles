@@ -7,6 +7,8 @@ set number
 set autoindent
 " インクリメンタルサーチを有効
 set incsearch
+" 検索時に大文字小文字の違いを無視
+set ignorecase
 " シンタックスハイライトの設定
 syntax on
 " クリップボードにコピーする
@@ -23,30 +25,26 @@ set backupdir=$VIM/backup
 set directory=$VIM/swap
 " undoファイルの場所
 set undodir=$VIM/undo
+" エンコーディング
+set enc=utf-8
 
-" -----------------------------------------------
-" - 全モード共通
-" -----------------------------------------------
-noremap gp "0p
-noremap gP "0P
 " -----------------------------------------------
 " - ノーマルモードのマッピング設定
 " -----------------------------------------------
 " 全選択
 nnoremap <Space>a ggVG
-" 検索コマンド
-nnoremap <Space>i /
 " 置換コマンド
 nnoremap <Space>s :%s/
 " vimrc表示
-nnoremap <Space>. :e ~/_vimrc
+nnoremap <Space>. :e ~/.vimrc<CR>
 " vimrc読み込み
-nnoremap <Space>l :source ~/_vimrc
+nnoremap <Space>l :source ~/.vimrc<CR>
 " バッファ切り替え
-nnoremap <Space>n :bnext
-nnoremap <Space>N :bprev
+nnoremap <Space>n :bnext<CR>
+nnoremap <Space>N :bprev<CR>
 " ファイラ起動
-nnoremap <Space>f :e.
+nnoremap <Space>f :e.<CR>
+
 " 表示行単位での移動と実際の行単位の移動コマンドを逆転
 nnoremap j gj
 nnoremap k gk
@@ -55,13 +53,18 @@ nnoremap gk k
 " xコマンドにブラックホールレジスタ設定
 nnoremap x "_x
 
-" macで挿入モードを抜けるときにIMEをOFFに切り替える
-if has('mac')
-  set ttimeoutlen=1
-  let g:imeoff = 'osascript -e "tell application \"System Events\" to key code 102"'
-  augroup MyIMEGroup
-    autocmd!
-    autocmd InsertLeave * :call system(g:imeoff)
-  augroup END
-  noremap <silent> <ESC> <ESC>:call system(g:imeoff)<CR>
-endif
+" -----------------------------------------------
+" - 全モード共通のマッピング設定
+" -----------------------------------------------
+" ヤンクの内容をペースト
+noremap gp "0p
+noremap gP "0P
+
+" -----------------------------------------------
+" - 自作コマンド読み込み
+" -----------------------------------------------
+so $VIM/script/SumDailyPoint.vim
+so $VIM/script/SumMonthlyPoint.vim
+so $VIM/script/AddDailyPoint.vim
+so $VIM/script/BeanCreation.vim
+
